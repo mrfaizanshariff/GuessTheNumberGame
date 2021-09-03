@@ -18,7 +18,8 @@ document.querySelector('.check').addEventListener('click', function () {
 
   //Making sure the user inputs something in the INPUT BOX
   if (!guess) {
-    document.querySelector('.message').textContent = 'No input detected 😢';
+    // document.querySelector('.message').textContent = 'No input detected 😢';
+    messageBlock('No input detected 😢');
   }
   //When the Player wins
   else if (guess === secretNumber) {
