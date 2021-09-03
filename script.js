@@ -77,7 +77,52 @@ document.querySelector('.again').addEventListener('click', function () {
   //incrementing count value
   // count++;
 });
+//Using key board to check the number
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    const guess = Number(document.querySelector('.guess').value);
 
+    //Making sure the user inputs something in the INPUT BOX
+    if (!guess) {
+      // document.querySelector('.message').textContent = 'No input detected 😢';
+      messageBlock('No input detected 😢');
+    }
+    //When the Player wins
+    else if (guess === secretNumber) {
+      // document.querySelector('.message').textContent = 'Yay you got it right';
+      messageBlock('Yay you got it right');
+      document.querySelector('.highscore').textContent = highScore;
+      document.querySelector('body').style.backgroundColor = '#60b347';
+      document.querySelector('.number').style.width = '30rem';
+      document.querySelector('.number').textContent = secretNumber;
+      if (score >= highScore) {
+        highScore = score;
+        document.querySelector('.highscore').textContent = highScore;
+      }
+    }
+    //when guess is wrong
+    else if (guess !== secretNumber) {
+      if (score > 1) {
+        guess > secretNumber
+          ? messageBlock(`Too High`)
+          : messageBlock(`Too Low`);
+        score--;
+        // document.querySelector('.score').textContent = score;
+        setScore(score);
+
+        document.querySelector('body').style.backgroundColor = '#20B7B4';
+      } else {
+        score--;
+        // document.querySelector('.score').textContent = score;
+        setScore(score);
+        messageBlock(`you lost the game 🤦‍♂️`);
+        // document.querySelector('.message').textContent = 'You Lost The Game 🤦‍♂️';
+        document.querySelector('body').style.backgroundColor = '#F33838';
+        document.querySelector('.number').textContent = secretNumber;
+      }
+    }
+  }
+});
 //previous game logic included within the check button onclick
 //when guess is high
 // else if (guess > secretNumber) {
