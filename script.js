@@ -22,7 +22,8 @@ document.querySelector('.check').addEventListener('click', function () {
   }
   //When the Player wins
   else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = 'Yay you got it right';
+    // document.querySelector('.message').textContent = 'Yay you got it right';
+    messageBlock('Yay you got it right');
     document.querySelector('.highscore').textContent = highScore;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
